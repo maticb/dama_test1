@@ -30,31 +30,22 @@
 
             });
 
-            // Wait for device API libraries to load
-            //
-            function onLoad() {
-                document.addEventListener("deviceready", onDeviceReady, false);
+            function init() {
+                document.addEventListener("deviceready", startup, false);
             }
-
-            // device APIs are available
-            //
-            function onDeviceReady() {
-                // Register the event listener
-                document.addEventListener("menubutton", onMenuKeyDown, false);
+            function startup() {
+                console.log("Business time...");
+                document.addEventListener("menubutton", doMenu, false);
             }
-
-            // Handle the menu button
-            //
-            function onMenuKeyDown() {
-                alert("ssssss");
+            function doMenu() {
+                alert("menu");
             }
-
         </script>
 
 
     </head>
 
-    <body onload="onLoad()"> 
+    <body onload="init()"> 
         <div data-role="page" id="page1">
             <!--<div data-role="header">
                 <h1>Dama</h1>
