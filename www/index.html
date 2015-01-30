@@ -26,20 +26,37 @@
                     alert("OMFG PIECE OF SHIT");
                 });
 
-                $("table tr").css("height", $(window).height()/8);
+                $("table tr").css("height", $(window).height() / 8);
 
             });
+            function onLoad() {
+                document.addEventListener("deviceready", onDeviceReady, false);
+            }
+
+            // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+            //
+            function onDeviceReady() {
+                // Register the event listener
+                document.addEventListener("menubutton", onMenuKeyDown, false);
+            }
+
+            // Handle the menu button
+            //
+            function onMenuKeyDown() {
+
+                alert("It works");
+            }
         </script>
 
 
     </head>
 
-    <body>
+    <body onload="onLoad()"> 
         <div data-role="page" id="page1">
-            <div data-role="header">
+            <!--<div data-role="header">
                 <h1>Dama</h1>
                 <button id="klik">gumb</button>
-            </div>
+            </div>-->
             <div role="main" class="ui-content">
 
                 <table>
