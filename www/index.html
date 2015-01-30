@@ -27,13 +27,16 @@
                 });
 
                 $("table tr").css("height", $(window).height() / 8);
-
+                document.addEventListener("deviceready", onDeviceReady, false);
             });
+
+            // Wait for device API libraries to load
+            //
             function onLoad() {
                 document.addEventListener("deviceready", onDeviceReady, false);
             }
 
-            // PhoneGap is loaded and it is now safe to make calls PhoneGap methods
+            // device APIs are available
             //
             function onDeviceReady() {
                 // Register the event listener
@@ -43,15 +46,15 @@
             // Handle the menu button
             //
             function onMenuKeyDown() {
-
-                alert("It works");
+                alert("ssssss");
             }
+
         </script>
 
 
     </head>
 
-    <body onload="onLoad()"> 
+    <body > 
         <div data-role="page" id="page1">
             <!--<div data-role="header">
                 <h1>Dama</h1>
@@ -78,6 +81,16 @@
             <div role="main" class="ui-content">
                 <a href="#page1" data-rel="back" data-transition="slide" class="ui-btn ui-corner-all ui-btn-inline">Go Back To Page 1</a>
             </div>
+        </div>
+
+        <div data-role="panel" id="mypanel" data-display="overlay">
+            <ul data-role="listview" class="fondo">
+                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 1</a></li>
+                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 2</a></li>
+                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 3</a></li>
+                <li data-icon="false"><a href="#combina" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 4</a></li>
+            </ul>
+
         </div>
     </body>
 
