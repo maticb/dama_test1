@@ -22,23 +22,25 @@
         <link rel="stylesheet" href="css/style.css">
         <script>
             $(document).ready(function() {
-                $("#klik").on("click", function() {
-                    alert("OMFG PIECE OF SHIT");
+                $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
+
+                $("#overlay").on("click", function() {
+                    $("#menu").slideToggle('slow', function() {
+                    });
+                    $("#overlay").css('opacity', 0);
                 });
-
-                $("table tr").css("height", $(window).height() / 8);
-
             });
 
             function init() {
                 document.addEventListener("deviceready", startup, false);
             }
             function startup() {
-                console.log("Business time...");
                 document.addEventListener("menubutton", doMenu, false);
             }
             function doMenu() {
-                alert("menu");
+                $("#menu").slideToggle('slow', function() {
+                });
+                $("#overlay").css('opacity', 0.3);
             }
         </script>
 
@@ -74,14 +76,14 @@
             </div>
         </div>
 
-        <div data-role="panel" id="mypanel" data-display="overlay">
-            <ul data-role="listview" class="fondo">
-                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 1</a></li>
-                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 2</a></li>
-                <li data-icon="false"><a href="#menu" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 3</a></li>
-                <li data-icon="false"><a href="#combina" class="menutxt" data-transition="slide"><img class="ui-li-icon" src="css\themes\default\images\icons-svg\alert-white.svg">Option 4</a></li>
-            </ul>
 
+        <div id="menu" data-role="none"  >
+            <ul>
+                <li><a href="#">Nova igra</a></li>
+                <li><a href="#" >Predaja</a></li>
+            </ul>
+        </div>
+        <div id="overlay" data-role="none"  >
         </div>
     </body>
 
