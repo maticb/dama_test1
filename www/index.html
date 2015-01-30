@@ -1,18 +1,33 @@
 <!DOCTYPE HTML>
 <html>
+    <!--
+    Izdelajte igro Dama za dva človeška igralca. Dama se igra s krogci na šahovnici velikosti 8 × 8 polj.
+    Vsak igralec prične igro z 12 krogci, ki so razvrščeni na črna polja v treh vrsticah 
+    (en igralec na enem, drugi
+    ,na drugem koncu šahovnice). 
+    Igralca izmenično premikata krogce enega za drugim. Krogec se lahko premakne za največ eno polje v diagonalni smeri.
+    Premik za več polj je možen samo takrat, ko se preskoči nasprotnikov krogec in je to moč storiti tudi v naslednji potezi. 
+    S preskakovanjem krogcev odstranjujemo nasprotnikove krogce.
+    Premikanje krogcev je možno samo naprej. kadar krogec doseže nasprotnikov rob šahovnice, se spremeni v damo, ki se lahko premika tudi diagonalno nazaj.
+    Cilj igre je odstraniti čim več ali vse nasprotnikove krogce. Natančnejša navodila si poglejte na spletu. 
+    Igralec lahko ponudi predajo ali neodločen rezultat, nasprotnik to sprejme ali zavrne
+    -->
     <head>
         <title>Dama</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
         <script src="js/jquery.js"></script>
-
         <script src="js/jquery.mobile-1.4.5.min.js"></script>
 
+        <link rel="stylesheet" href="css/style.css">
         <script>
             $(document).ready(function() {
                 $("#klik").on("click", function() {
                     alert("OMFG PIECE OF SHIT");
                 });
+
+                $("table tr").css("height", $(window).height()/8);
+
             });
         </script>
 
@@ -26,7 +41,17 @@
                 <button id="klik">gumb</button>
             </div>
             <div role="main" class="ui-content">
-                <a href="#page2" data-transition="slide" class="ui-btn ui-corner-all ui-btn-inline">Go To Page 2</a>
+
+                <table>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                </table>
             </div>
         </div>
         <div data-role="page" id="page2">

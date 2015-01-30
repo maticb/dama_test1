@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 31.1.2015, 0:02:49
+    Author     : Maticb
+*/
+
+table{
+    border-collapse: collapse;
+    width:100%;
+}
+table,table td{
+border: 1px solid grey;
+}
+table tr:nth-child(even) td:nth-child(even){
+    background-color: black;
+}
+table tr:nth-child(odd) td:nth-child(odd){
+    background-color: black;
+}
