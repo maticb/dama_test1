@@ -27,7 +27,7 @@
                 });
 
                 $("table tr").css("height", $(window).height() / 8);
-                document.addEventListener("deviceready", onDeviceReady, false);
+               
             });
 
             // Wait for device API libraries to load
@@ -54,7 +54,7 @@
 
     </head>
 
-    <body > 
+    <body onload="onLoad()"> 
         <div data-role="page" id="page1">
             <!--<div data-role="header">
                 <h1>Dama</h1>
