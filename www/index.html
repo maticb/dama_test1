@@ -166,6 +166,8 @@
             function nova_click(event)
             {
                 event.preventDefault();
+                menu_show();
+
                 setup_krogcev();
                 na_vrsti = 1;
                 pobarvani = false;
@@ -187,6 +189,7 @@
             function predaja_click(event)
             {
                 event.preventDefault();
+                menu_show();
                 if (na_vrsti === 1)
                     $("#igralec_predaja").html("Beli");
                 else
@@ -196,6 +199,7 @@
             function neodloceno_click(event)
             {
                 event.preventDefault();
+                menu_show();
                 if (na_vrsti === 1)
                     $("#igralec_neodloceno").html("Beli");
                 else
