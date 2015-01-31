@@ -94,6 +94,20 @@ table tr img{
     color:grey;
     display:block;
     position:fixed;
-    top:0;
-    left:0;
+    top:10px;
+    left:10px;
+}
+
+.popup{
+    display:none;
+}
+
+.img_ozadje{
+    padding:0;
+    margin:0;
+    height:100%;
+    width:100%;
+    background-color:blue;
+    opacity:0.5;
+
 }

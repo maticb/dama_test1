@@ -1,0 +1,61 @@
+<script>
+    if (parseInt(tip) === 1 && na_vrsti === 1 && parseInt(barva) === 1)//navadna dama, bela
+    {
+        var selector1 = "p_" + (parseInt(x) - 1) + (parseInt(y) - 1);//levo gor
+        var x1 = parseInt(x) - 1;
+        var y1 = parseInt(y) - 1;
+        var selector2 = "p_" + (parseInt(x) - 1) + (parseInt(y) + 1);//desno gor
+        var x2 = parseInt(x) - 1;
+        var y2 = parseInt(y) + 1;
+
+        var noben_pobarvan = false;
+        if ($("#" + selector1).html() === "")
+        {
+            $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+            obarvani[0] = true;
+            noben_pobarvan = true;
+        }
+        else//levo gor je zasedeno
+        {
+            var barva = preveri_barvo(selector1);
+            if (parseInt(barva) === 2)//levo gor je nasprotnikov
+            {
+                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) - 2);//levo gor
+                var x1 = parseInt(x) - 2;
+                var y1 = parseInt(y) - 2;
+                if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
+                {
+                    $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                    obarvani[0] = true;
+                    noben_pobarvan = true;
+                }
+            }
+        }
+        if ($("#" + selector2).html() === "")
+        {
+            $("#" + selector2).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+            obarvani[1] = true;
+            noben_pobarvan = true;
+        }
+        else
+        {
+            var barva = preveri_barvo(selector2);
+            if (parseInt(barva) === 2)//desno gor je nasprotnikov
+            {
+                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) + 2);//desno gor
+                var x2 = parseInt(x) - 2;
+                var y2 = parseInt(y) + 2;
+                if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO DESNO JE PRAZNO
+                {
+                    $("#" + selector3).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                    obarvani[1] = true;
+                    noben_pobarvan = true;
+                }
+            }
+        }
+        if (noben_pobarvan)
+        {
+            pobarvani = true;
+            kliknjen_x = x;
+            kliknjen_y = y;
+    }
