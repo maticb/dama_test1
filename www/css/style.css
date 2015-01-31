@@ -9,8 +9,8 @@ and open the template in the editor.
 */
 #tabela
 {
-    /*-moz-transform: rotate(180deg);
-    -webkit-transform: rotate(180deg);*/
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
 }
 table{
     border-collapse: collapse;
