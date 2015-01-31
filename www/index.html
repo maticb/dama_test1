@@ -15,11 +15,11 @@
     <head>
         <title>Dama</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
-      <!--  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
-     
-        <script src="js/jquery.mobile-1.4.5.min.js"></script>-->
-        
-           <script src="js/jquery.js"></script>
+        <!--  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
+       
+          <script src="js/jquery.mobile-1.4.5.min.js"></script>-->
+
+        <script src="js/jquery.js"></script>
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
         <link rel="stylesheet" href="css/style.css">
         <script>
@@ -76,7 +76,7 @@
                         z_y += 2;//naslednji
                 }
                 $(".img").css("height", visina_tr + "px");
-                //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
+                $(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                 ///---------------------------------------
 
 
@@ -112,6 +112,26 @@
             function doMenu() {
                 menu_show();
             }
+            
+            function doOnOrientationChange()
+            {
+                switch (window.orientation)
+                {
+                    case -90:
+                    case 90:
+                        // alert('landscape');
+                        $(".img").css("height", visina_tr + "px");
+                        $(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
+                        break;
+                    default:
+                        // alert('portrait');
+                        $(".img").css("height", visina_tr + "px");
+                        $(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
+                        break;
+                }
+            }
+
+            window.addEventListener('orientationchange', doOnOrientationChange);
         </script>
 
 
