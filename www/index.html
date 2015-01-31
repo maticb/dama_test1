@@ -31,7 +31,7 @@
                 $.mobile.touchOverflowEnabled = true;
             });
             function na_vrsti_display() {
-                turn();
+                turn(na_vrsti);
                 if (na_vrsti === 1)
                     $("#igralec").html("BELI");
                 else
@@ -156,15 +156,18 @@
                 //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                 ///---------------------------------------
             }
-            function turn()
+            function turn(t)
             {
-                if (na_vrsti === 1)
+                if (t === 1)
                 {
-                 
+                    $("body").css("-moz-transform", "rotate(0deg");
+                    $("body").css("-webkit-transform", "rotate(0deg");
+
                 }
                 else
                 {
-                  
+                    $("body").css("-moz-transform", "rotate(-180deg");
+                    $("body").css("-webkit-transform", "rotate(-180deg");
 
                 }
             }
@@ -202,20 +205,34 @@
                 event.preventDefault();
                 menu_show();
                 if (na_vrsti === 1)
+                {
                     $("#igralec_predaja").html("Beli");
+                    turn(2);
+                }
                 else
+                {
                     $("#igralec_predaja").html("Črni");
+                    turn(1);
+                }
                 popup_show("#predaja_confirm");
+
             }
             function neodloceno_click(event)
             {
                 event.preventDefault();
                 menu_show();
                 if (na_vrsti === 1)
-                    $("#igralec_neodloceno").html("Beli");
+                {
+                    $("#igralec_predaja").html("Beli");
+                    turn(2);
+                }
                 else
-                    $("#igralec_neodloceno").html("Črni");
+                {
+                    $("#igralec_predaja").html("Črni");
+                    turn(1);
+                }
                 popup_show("#neodloceno_confirm");
+
             }
 
             function preveri_barvo(selector)
@@ -732,8 +749,9 @@
                     obarvani[2] = false;
                     obarvani[3] = false;
                     setup_krogcev();
+                    turn(na_vrsti);
                 }
-
+                turn(na_vrsti);
             }
 
             function neodloceno(rez)
@@ -753,7 +771,9 @@
                     obarvani[2] = false;
                     obarvani[3] = false;
                     setup_krogcev();
+                    turn(na_vrsti);
                 }
+                turn(na_vrsti);
             }
 
         </script>
