@@ -164,7 +164,7 @@
                     {
                         case -90:
                         case 90:
-                           navigator.screenOrientation.set('landscape');
+                            navigator.screenOrientation.set('landscape');
                             break;
                         default:
                             navigator.screenOrientation.set('portrait');
@@ -176,11 +176,12 @@
                 }
                 else
                 {
-                    
+                    switch (window.orientation)
+
                     {
                         case -90:
                         case 90:
-                           navigator.screenOrientation.set('reverseLandscape');
+                            navigator.screenOrientation.set('reverseLandscape');
                             break;
                         default:
                             navigator.screenOrientation.set('reversePortrait');
@@ -200,7 +201,6 @@
             {
                 event.preventDefault();
                 menu_show();
-
                 setup_krogcev();
                 na_vrsti = 1;
                 pobarvani = false;
@@ -744,7 +744,6 @@
                     }
                     $("#navadn_popup").html(igralec + " se je predal, zmaga " + igralec1 + "! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
                     popup_show("#navadn_popup");
-
                     na_vrsti = 1;
                     na_vrsti_display();
                     pobarvani = false;
@@ -766,7 +765,6 @@
                 {
                     $("#navadn_popup").html("Igralca sta igro razglasila za neodločeno! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
                     popup_show("#navadn_popup");
-
                     na_vrsti = 1;
                     na_vrsti_display();
                     pobarvani = false;
