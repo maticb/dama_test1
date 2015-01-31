@@ -35,6 +35,8 @@
                     $("#menu").slideToggle('slow', function() {
                     });
                     $("#overlay").css('opacity', 0.3);
+                    $("#overlay").css('z-index', 10);
+                    $("#menu").css('z-index', 11);
                     $("#menu").attr("data-displayed", "1");
                 }
                 else
@@ -42,6 +44,8 @@
                     $("#menu").slideToggle('slow', function() {
                     });
                     $("#overlay").css('opacity', 0);
+                    $("#overlay").css('z-index', -20);
+                    $("#menu").css('z-index', -20);
                     $("#menu").attr("data-displayed", "0");
                 }
             }
