@@ -31,6 +31,7 @@
                 $.mobile.touchOverflowEnabled = true;
             });
             function na_vrsti_display() {
+                turn();
                 if (na_vrsti === 1)
                     $("#igralec").html("BELI");
                 else
@@ -155,7 +156,39 @@
                 //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                 ///---------------------------------------
             }
+            function turn()
+            {
+                if (na_vrsti === 1)
+                {
+                    switch (window.orientation)
+                    {
+                        case -90:
+                        case 90:
+                           navigator.screenOrientation.set('landscape');
+                            break;
+                        default:
+                            navigator.screenOrientation.set('portrait');
+                            break;
+                    }
 
+
+
+                }
+                else
+                {
+                    
+                    {
+                        case -90:
+                        case 90:
+                           navigator.screenOrientation.set('reverseLandscape');
+                            break;
+                        default:
+                            navigator.screenOrientation.set('reversePortrait');
+                            break;
+                    }
+
+                }
+            }
             $(document).ready(function() {
                 na_vrsti_display();
                 // menu_show();
@@ -760,7 +793,7 @@
                 <button id="klik">gumb</button>
             </div>-->
             <div role="main" class="ui-content">
-                <table>
+                <table id="tabela">
                     <tr><td id="p_00"></td><td id="p_01"></td><td id="p_02"></td><td id="p_03"></td><td id="p_04"></td><td id="p_05"></td><td id="p_06" ></td><td id="p_07"></td></tr>
                     <tr><td id="p_10"></td><td id="p_11"></td><td id="p_12"></td><td id="p_13"></td><td id="p_14"></td><td id="p_15"></td><td id="p_16" ></td><td id="p_17"></td></tr>
                     <tr><td id="p_20"></td><td id="p_21"></td><td id="p_22"></td><td id="p_23"></td><td id="p_24"></td><td id="p_25"></td><td id="p_26" ></td><td id="p_27"></td></tr>

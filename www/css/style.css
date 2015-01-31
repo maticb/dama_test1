@@ -7,7 +7,11 @@ and open the template in the editor.
     Created on : 31.1.2015, 0:02:49
     Author     : Maticb
 */
-
+#tabela
+{
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+}
 table{
     border-collapse: collapse;
     width:100%;
