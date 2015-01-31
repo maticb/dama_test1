@@ -33,10 +33,8 @@
             function na_vrsti_display() {
                 if (na_vrsti === 1)
                     $("#igralec").html("BELI");
-
                 else
                     $("#igralec").html("ČRNI");
-
             }
 
 
@@ -46,7 +44,6 @@
                 {
                     $("#menu").slideToggle('slow', function() {
                     });
-
                     $("#menu").css('z-index', 11);
                     $("#menu").attr("data-displayed", "1");
                 }
@@ -54,11 +51,29 @@
                 {
                     $("#menu").slideToggle('slow', function() {
                     });
-
-                    setTimeout(500, function() {
+                    setTimeout(300, function() {
                         $("#menu").css('z-index', -20);
                     });
                     $("#menu").attr("data-displayed", "0");
+                }
+            }
+            function popup_show(selector)
+            {
+                if ($(selector).attr("data-displayed") === "0")
+                {
+                    $(selector).slideToggle('slow', function() {
+                    });
+                    $(selector).css('z-index', 11);
+                    $(selector).attr("data-displayed", "1");
+                }
+                else
+                {
+                    $(selector).slideToggle('slow', function() {
+                    });
+                    setTimeout(300, function() {
+                        $(selector).css('z-index', -20);
+                    });
+                    $(selector).attr("data-displayed", "0");
                 }
             }
             function init() {
@@ -89,7 +104,6 @@
                 }
             }
             window.addEventListener('orientationchange', doOnOrientationChange);
-
             function setup_krogcev()
             {
                 $("table tr td").each(function() {
@@ -104,7 +118,6 @@
                 {
                     var selector = "p_" + z_x + z_y;
                     $("#" + selector).html('<img onclick="click_dame(' + z_x + ',' + z_y + ',1,1)" data-barva="1" class="img" src="imgs/beli.png" alt="beli" />');
-
                     if (z_y === 7)//gre v novo vrstico
                     {
                         z_y = 0;
@@ -116,7 +129,7 @@
                         z_x++;
                     }
                     else
-                        z_y += 2;//naslednji
+                        z_y += 2; //naslednji
                 }
                 //crni
                 var z_x = 0;
@@ -124,9 +137,7 @@
                 for (var i = 0; i < 12; i++)
                 {
                     var selector = "p_" + z_x + z_y;
-
                     $("#" + selector).html('<img onclick="click_dame(' + z_x + ',' + z_y + ',1,2)" data-barva="2" class="img" data-tip="1"  src="imgs/crni.png" alt="crni" />');
-
                     if (z_y === 7)//gre v novo vrstico
                     {
                         z_y = 0;
@@ -138,7 +149,7 @@
                         z_x++;
                     }
                     else
-                        z_y += 2;//naslednji
+                        z_y += 2; //naslednji
                 }
                 $(".img").css("height", visina_tr + "px");
                 //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
@@ -149,18 +160,13 @@
                 na_vrsti_display();
                 // menu_show();
                 $("table td").css("width", $(window).width() / 8 + "px");
-
                 $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
-
-
                 setup_krogcev();
-
             });
             function nova_click(event)
             {
                 event.preventDefault();
                 setup_krogcev();
-
                 na_vrsti = 1;
                 pobarvani = false;
                 kliknjen_x = -1;
@@ -181,12 +187,20 @@
             function predaja_click(event)
             {
                 event.preventDefault();
-                alert("no");
+                if (na_vrsti === 1)
+                    $("#igralec_predaja").html("Beli");
+                else
+                    $("#igralec_predaja").html("Črni");
+                popup_show("#predaja_confirm");
             }
             function neodloceno_click(event)
             {
                 event.preventDefault();
-                alert("no");
+                if (na_vrsti === 1)
+                    $("#igralec_neodloceno").html("Beli");
+                else
+                    $("#igralec_neodloceno").html("Črni");
+                popup_show("#neodloceno_confirm");
             }
 
             function preveri_barvo(selector)
@@ -203,38 +217,33 @@
             var kliknjen_y = -1;
             var obarvani = [false, false, false, false];
             var pobarvani_koord = [];
-
             function click_dame(x, y, tip, barva)
             {
                 var visina_tr = (($(window).height() - $(window).height() * 0.05) / 8) - 2;
-
                 if (pobarvani === false)
                 {
                     if (parseInt(tip) === 1 && na_vrsti === 1 && parseInt(barva) === 1)//navadna dama, bela-------------------------------------------------------------------------
                     {
-                        var selector1 = "p_" + (parseInt(x) - 1) + (parseInt(y) - 1);//levo gor
+                        var selector1 = "p_" + (parseInt(x) - 1) + (parseInt(y) - 1); //levo gor
                         var x1 = parseInt(x) - 1;
                         var y1 = parseInt(y) - 1;
-                        var selector2 = "p_" + (parseInt(x) - 1) + (parseInt(y) + 1);//desno gor
+                        var selector2 = "p_" + (parseInt(x) - 1) + (parseInt(y) + 1); //desno gor
                         var x2 = parseInt(x) - 1;
                         var y2 = parseInt(y) + 1;
-
                         var noben_pobarvan = false;
                         if ($("#" + selector1).html() === "")
                         {
                             $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[0] = true;
                             noben_pobarvan = true;
-
                             pobarvani_koord.push([x1, y1]);
-
                         }
                         else//levo gor je zasedeno
                         {
                             var barva = preveri_barvo(selector1);
                             if (parseInt(barva) === 2)//levo gor je nasprotnikov
                             {
-                                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) - 2);//levo gor
+                                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) - 2); //levo gor
                                 var x1 = parseInt(x) - 2;
                                 var y1 = parseInt(y) - 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
@@ -258,7 +267,7 @@
                             var barva = preveri_barvo(selector2);
                             if (parseInt(barva) === 2)//desno gor je nasprotnikov
                             {
-                                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) + 2);//desno gor
+                                var selector3 = "p_" + (parseInt(x) - 2) + (parseInt(y) + 2); //desno gor
                                 var x2 = parseInt(x) - 2;
                                 var y2 = parseInt(y) + 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO DESNO JE PRAZNO
@@ -279,13 +288,12 @@
                     }
                     if (parseInt(tip) === 1 && na_vrsti === 2 && parseInt(barva) === 2)//navadna dama,crna---------------------------------------------------------------------------------
                     {
-                        var selector1 = "p_" + (parseInt(x) + 1) + (parseInt(y) - 1);//levo dol
+                        var selector1 = "p_" + (parseInt(x) + 1) + (parseInt(y) - 1); //levo dol
                         var x1 = parseInt(x) + 1;
                         var y1 = parseInt(y) - 1;
-                        var selector2 = "p_" + (parseInt(x) + 1) + (parseInt(y) + 1);//desno dol
+                        var selector2 = "p_" + (parseInt(x) + 1) + (parseInt(y) + 1); //desno dol
                         var x2 = parseInt(x) + 1;
                         var y2 = parseInt(y) + 1;
-
                         var noben_pobarvan = false;
                         if ($("#" + selector1).html() === "")
                         {
@@ -299,7 +307,7 @@
                             var barva = preveri_barvo(selector1);
                             if (parseInt(barva) === 1)//levo gor je nasprotnikov
                             {
-                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2);//levo gor
+                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2); //levo gor
                                 var x1 = parseInt(x) + 2;
                                 var y1 = parseInt(y) - 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
@@ -323,7 +331,7 @@
                             var barva = preveri_barvo(selector2);
                             if (parseInt(barva) === 1)//levo gor je nasprotnikov
                             {
-                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) + 2);//levo gor
+                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) + 2); //levo gor
                                 var x2 = parseInt(x) + 2;
                                 var y2 = parseInt(y) + 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
@@ -350,37 +358,32 @@
                             nasprotnik = 2;
                         else if (na_vrsti === 2)
                             nasprotnik = 1;
-
-                        var selector1 = "p_" + (parseInt(x) - 1) + (parseInt(y) - 1);//levo gor
+                        var selector1 = "p_" + (parseInt(x) - 1) + (parseInt(y) - 1); //levo gor
                         var x1 = parseInt(x) - 1;
                         var y1 = parseInt(y) - 1;
-                        var selector2 = "p_" + (parseInt(x) - 1) + (parseInt(y) + 1);//desno gor
+                        var selector2 = "p_" + (parseInt(x) - 1) + (parseInt(y) + 1); //desno gor
                         var x2 = parseInt(x) - 1;
                         var y2 = parseInt(y) + 1;
-                        var selector3 = "p_" + (parseInt(x) + 1) + (parseInt(y) - 1);//levo dol
+                        var selector3 = "p_" + (parseInt(x) + 1) + (parseInt(y) - 1); //levo dol
                         var x3 = parseInt(x) + 1;
                         var y3 = parseInt(y) - 1;
-                        var selector4 = "p_" + (parseInt(x) + 1) + (parseInt(y) + 1);//desno dol
+                        var selector4 = "p_" + (parseInt(x) + 1) + (parseInt(y) + 1); //desno dol
                         var x4 = parseInt(x) + 1;
                         var y4 = parseInt(y) + 1;
-
                         var noben_pobarvan = false;
-
                         if ($("#" + selector1).html() === "")
                         {
                             $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[0] = true;
                             noben_pobarvan = true;
-
                             pobarvani_koord.push([x1, y1]);
-
                         }
                         else//levo gor je zasedeno
                         {
                             var barva = preveri_barvo(selector1);
                             if (parseInt(barva) === nasprotnik)//levo gor je nasprotnikov
                             {
-                                var selector1 = "p_" + (parseInt(x) - 2) + (parseInt(y) - 2);//levo gor
+                                var selector1 = "p_" + (parseInt(x) - 2) + (parseInt(y) - 2); //levo gor
                                 var x1 = parseInt(x) - 2;
                                 var y1 = parseInt(y) - 2;
                                 if ($("#" + selector1).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
@@ -404,7 +407,7 @@
                             var barva = preveri_barvo(selector2);
                             if (parseInt(barva) === nasprotnik)//desno gor je nasprotnikov
                             {
-                                var selector2 = "p_" + (parseInt(x) - 2) + (parseInt(y) + 2);//desno gor
+                                var selector2 = "p_" + (parseInt(x) - 2) + (parseInt(y) + 2); //desno gor
                                 var x2 = parseInt(x) - 2;
                                 var y2 = parseInt(y) + 2;
                                 if ($("#" + selector2).html() === "")// 2 POLJA DIAGONALNO DESNO JE PRAZNO
@@ -429,7 +432,7 @@
                             var barva = preveri_barvo(selector3);
                             if (parseInt(barva) === nasprotnik)//levo dol je nasprotnikov
                             {
-                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2);//levo dol
+                                var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2); //levo dol
                                 var x3 = parseInt(x) + 2;
                                 var y3 = parseInt(y) - 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
@@ -453,7 +456,7 @@
                             var barva = preveri_barvo(selector4);
                             if (parseInt(barva) === nasprotnik)//desno dol je nasprotnikov
                             {
-                                var selector4 = "p_" + (parseInt(x) + 2) + (parseInt(y) + 2);//desno dol
+                                var selector4 = "p_" + (parseInt(x) + 2) + (parseInt(y) + 2); //desno dol
                                 var x4 = parseInt(x) + 2;
                                 var y4 = parseInt(y) + 2;
                                 if ($("#" + selector4).html() === "")// 2 POLJA DIAGONALNO DESNO JE PRAZNO
@@ -576,11 +579,9 @@
                     $(selector).html("");
                 });
                 pobarvani_koord = [];
-
-
-                var selector_s = "#p_" + kliknjen_x + kliknjen_y;//stara pozicija
+                var selector_s = "#p_" + kliknjen_x + kliknjen_y; //stara pozicija
                 $(selector_s).html("");
-                var selector = "#p_" + x + y;//NOVA POZICIJA
+                var selector = "#p_" + x + y; //NOVA POZICIJA
 
 
                 var ponovni_premik = false;
@@ -628,18 +629,14 @@
                 {
                     if (na_vrsti === 1)
                         slikca = "imgs/beli_d.png";
-
                     else if (na_vrsti === 2)
                         slikca = "imgs/crni_d.png";
-
                     tip = 2;
-
                 }
                 else
                 {
                     if (na_vrsti === 1)
                         slikca = "imgs/beli.png";
-
                     else if (na_vrsti === 2)
                         slikca = "imgs/crni.png";
                 }
@@ -664,7 +661,6 @@
                         na_vrsti = 1;
                 }
                 na_vrsti_display();
-
                 pobarvani = false;
                 kliknjen_x = -1;
                 kliknjen_y = -1;
@@ -672,9 +668,6 @@
                 obarvani[1] = false;
                 obarvani[2] = false;
                 obarvani[3] = false;
-
-
-
                 //reset visine because logic
                 $(".img").css("height", ($(window).height() - $(window).height() * 0.05) / 8 + "px");
                 if (st_crnih === 0)
@@ -693,6 +686,60 @@
             }
 
 
+            function predaja(rez)
+            {
+                popup_show("#predaja_confirm");
+                if (rez === true)
+                {
+                    var igralec = "";
+                    var igralec1 = "";
+                    if (na_vrsti === 1)
+                    {
+                        igralec = "Beli";
+                        igralec1 = "črni";
+                    }
+                    else
+                    {
+                        igralec = "Črni";
+                        igralec1 = "beli";
+                    }
+                    $("#navadn_popup").html(igralec + " se je predal, zmaga " + igralec1 + "! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
+                    popup_show("#navadn_popup");
+
+                    na_vrsti = 1;
+                    na_vrsti_display();
+                    pobarvani = false;
+                    kliknjen_x = -1;
+                    kliknjen_y = -1;
+                    obarvani[0] = false;
+                    obarvani[1] = false;
+                    obarvani[2] = false;
+                    obarvani[3] = false;
+                    setup_krogcev();
+                }
+
+            }
+
+            function neodloceno(rez)
+            {
+                popup_show("#neodloceno_confirm");
+                if (rez)
+                {
+                    $("#navadn_popup").html("Igralca sta igro razglasila za neodločeno! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
+                    popup_show("#navadn_popup");
+
+                    na_vrsti = 1;
+                    na_vrsti_display();
+                    pobarvani = false;
+                    kliknjen_x = -1;
+                    kliknjen_y = -1;
+                    obarvani[0] = false;
+                    obarvani[1] = false;
+                    obarvani[2] = false;
+                    obarvani[3] = false;
+                    setup_krogcev();
+                }
+            }
 
         </script>
 
@@ -737,14 +784,22 @@
                 <li onclick="neodloceno_click(event)" ><a href="#">Neodločeno</a></li>
             </ul>
         </div>
-        <div class="popup" id="predaja_confirm" >
-            <h6>Igralec <span id="igralec_predaja"></span> se predaja, sprejmeš predajo? </h6>
-            <button id="yes">Da</button>  <button id="no">Ne</button>
+
+        <div class="popup" id="predaja_confirm" data-displayed="0" >
+            <h6><span id="igralec_predaja"></span> igralec  se predaja, sprejmeš predajo? </h6>
+            <button onclick="predaja(true)" >Da</button>  <button onclick="predaja(false)">Ne</button>
         </div>
-        <div class="popup" id="neodloceno_confirm" >
-            <h6>Igralec <span id="igralec_predaja"></span> igro razglaša za neodločeno, sprejmeš? </h6>
-            <button id="yes">Da</button>  <button id="no">Ne</button>
+
+
+        <div class="popup" id="neodloceno_confirm" data-displayed="0" >
+            <h6><span id="igralec_neodloceno"></span> igralec  igro razglaša za neodločeno, sprejmeš? </h6>
+            <button onclick="neodloceno(true)">Da</button>  <button onclick="neodloceno(false)">Ne</button>
         </div>
+        <div class="popup" id="navadn_popup" data-displayed="0" >
+
+        </div>
+
+
 
         <div id="na_vrsti_je"><p>Na vrsti je: <span id="igralec" ></span></p></div>
     </body>
