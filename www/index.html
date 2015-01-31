@@ -13,13 +13,14 @@
     Igralec lahko ponudi predajo ali neodločen rezultat, nasprotnik to sprejme ali zavrne
     -->
     <head>
+        <meta charset="UTF-8">
         <title>Dama</title>
         <meta name="viewport" content="width=device-width,initial-scale=1"/>
         <!--  <link rel="stylesheet" href="css/themes/default/jquery.mobile-1.4.5.min.css">
        
           <script src="js/jquery.mobile-1.4.5.min.js"></script>-->
-
         <script src="js/jquery.js"></script>
+
         <script type="text/javascript" charset="utf-8" src="cordova.js"></script>  
         <link rel="stylesheet" href="css/style.css">
         <script>
@@ -27,10 +28,20 @@
             $(document).bind("mobileinit", function() {
                 $.mobile.touchOverflowEnabled = true;
             });
-            $(document).ready(function() {
-                $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
-                var visina_tr = ($(window).height() - $(window).height() * 0.05) / 8;
+            function na_vrsti_display() {
+                if (na_vrsti === 1)
+                    $("#igralec").html("BELI");
 
+                else
+                    $("#igralec").html("ČRNI");
+
+            }
+
+            function setup_krogcev()
+            {
+                $("table tr td").each(function() {
+                    $(this).html("");
+                });
                 // setup krogcev
                 //beli
                 var z_x = 5;
@@ -38,7 +49,7 @@
                 for (var i = 0; i < 12; i++)
                 {
                     var selector = "p_" + z_x + z_y;
-                    $("#" + selector).html('<img class="img" src="imgs/beli.png" alt="beli" />');
+                    $("#" + selector).html('<img class="img" data-tip="1" src="imgs/beli.png" alt="beli" />');
 
                     if (z_y === 7)//gre v novo vrstico
                     {
@@ -55,12 +66,12 @@
                 }
                 //crni
                 var z_x = 0;
-                var z_y = 0;
+                var z_y = 1;
                 for (var i = 0; i < 12; i++)
                 {
                     var selector = "p_" + z_x + z_y;
 
-                    $("#" + selector).html('<img class="img"  src="imgs/crni.png" alt="crni" />');
+                    $("#" + selector).html('<img class="img" data-tip="1"  src="imgs/crni.png" alt="crni" />');
 
                     if (z_y === 7)//gre v novo vrstico
                     {
@@ -78,12 +89,33 @@
                 $(".img").css("height", visina_tr + "px");
                 //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                 ///---------------------------------------
+            }
 
+            $(document).ready(function() {
+                na_vrsti_display();
+                menu_show();
 
-                $("#overlay").on("click", function() {
-                    menu_show();
-                });
+                $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
+                var visina_tr = ($(window).height() - $(window).height() * 0.05) / 8;
+
+                setup_krogcev();
+
             });
+            function nova_click(event)
+            {
+                event.preventDefault();
+                alert("no");
+            }
+            function predaja_click(event)
+            {
+                event.preventDefault();
+                alert("no");
+            }
+            function neodloceno_click(event)
+            {
+                event.preventDefault();
+                alert("no");
+            }
             function menu_show()
             {
                 if ($("#menu").attr("data-displayed") === "0")
@@ -112,7 +144,8 @@
             function doMenu() {
                 menu_show();
             }
-            
+
+
             function doOnOrientationChange()
             {
                 switch (window.orientation)
@@ -130,14 +163,16 @@
                         break;
                 }
             }
-
             window.addEventListener('orientationchange', doOnOrientationChange);
+
+
         </script>
 
 
     </head>
 
     <body onload="init()"> 
+
         <div data-role="page"  style="overflow-x:visible; " id="page1">
             <!--<div data-role="header">
                 <h1>Dama</h1>
@@ -148,10 +183,10 @@
                     <tr><td id="p_00"></td><td id="p_01"></td><td id="p_02"></td><td id="p_03"></td><td id="p_04"></td><td id="p_05"></td><td id="p_06" ></td><td id="p_07"></td></tr>
                     <tr><td id="p_10"></td><td id="p_11"></td><td id="p_12"></td><td id="p_13"></td><td id="p_14"></td><td id="p_15"></td><td id="p_16" ></td><td id="p_17"></td></tr>
                     <tr><td id="p_20"></td><td id="p_21"></td><td id="p_22"></td><td id="p_23"></td><td id="p_24"></td><td id="p_25"></td><td id="p_26" ></td><td id="p_27"></td></tr>
-                    <tr><td id="p_30"></td><td id="p_31"></td><td id="p_32"></td><td id="p_33"></td><td id="p_04"></td><td id="p_35"></td><td id="p_36" ></td><td id="p_37"></td></tr>
-                    <tr><td id="p_40"></td><td id="p_41"></td><td id="p_42"></td><td id="p_43"></td><td id="p_04"></td><td id="p_45"></td><td id="p_46" ></td><td id="p_47"></td></tr>
-                    <tr><td id="p_50"></td><td id="p_51"></td><td id="p_52"></td><td id="p_53"></td><td id="p_04"></td><td id="p_55"></td><td id="p_56" ></td><td id="p_57"></td></tr>
-                    <tr><td id="p_60"></td><td id="p_61"></td><td id="p_62"></td><td id="p_63"></td><td id="p_04"></td><td id="p_65"></td><td id="p_66" ></td><td id="p_67"></td></tr>
+                    <tr><td id="p_30"></td><td id="p_31"></td><td id="p_32"></td><td id="p_33"></td><td id="p_34"></td><td id="p_35"></td><td id="p_36" ></td><td id="p_37"></td></tr>
+                    <tr><td id="p_40"></td><td id="p_41"></td><td id="p_42"></td><td id="p_43"></td><td id="p_44"></td><td id="p_45"></td><td id="p_46" ></td><td id="p_47"></td></tr>
+                    <tr><td id="p_50"></td><td id="p_51"></td><td id="p_52"></td><td id="p_53"></td><td id="p_54"></td><td id="p_55"></td><td id="p_56" ></td><td id="p_57"></td></tr>
+                    <tr><td id="p_60"></td><td id="p_61"></td><td id="p_62"></td><td id="p_63"></td><td id="p_64"></td><td id="p_65"></td><td id="p_66" ></td><td id="p_67"></td></tr>
                     <tr><td id="p_70"></td><td id="p_71"></td><td id="p_72"></td><td id="p_73"></td><td id="p_74"></td><td id="p_75"></td><td id="p_76" ></td><td id="p_77"></td></tr>
 
                 </table>
@@ -168,13 +203,22 @@
 
 
         <div data-displayed="0" id="menu" data-role="none"  >
-            <ul>
-                <li><a href="#">Nova igra</a></li>
-                <li><a href="#" >Predaja</a></li>
+            <ul >
+                <li onclick="nova_click(event)"  ><a href="#">Nova igra</a></li>
+                <li onclick="predaja_click(event)"  ><a href="#">Predaja</a></li>
+                <li onclick="neodloceno_click(event)" ><a href="#">Neodločeno</a></li>
             </ul>
         </div>
+        <div id="predaja_confirm" >
+            <h6>Igralec <span id="igralec_predaja"></span> se predaja, sprejmeš predajo? </h6>
+            <button id="yes">Da</button>  <button id="no">Ne</button>
+        </div>
+        <div id="neodloceno_confirm" >
+            <h6>Igralec <span id="igralec_predaja"></span> igro razglaša za neodločeno, sprejmeš? </h6>
+            <button id="yes">Da</button>  <button id="no">Ne</button>
+        </div>
 
-    </div>
-</body>
+        <div id="na_vrsti_je"><p>Na vrsti je: <span id="igralec" ></span></p></div>
+    </body>
 
 </html>
