@@ -22,6 +22,9 @@
         <link rel="stylesheet" href="css/style.css">
         <script>
             var na_vrsti = 1; //igralce na vrsti
+            $(document).bind("mobileinit", function() {
+                $.mobile.touchOverflowEnabled = true;
+            });
             $(document).ready(function() {
                 $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
                 var visina_tr = ($(window).height() - $(window).height() * 0.05) / 8;
