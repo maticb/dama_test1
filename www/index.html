@@ -25,12 +25,26 @@
                 $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
 
                 $("#overlay").on("click", function() {
+                    menu_show();
+                });
+            });
+            function menu_show()
+            {
+                if ($("#menu").attr("data-displayed") === "0")
+                {
+                    $("#menu").slideToggle('slow', function() {
+                    });
+                    $("#overlay").css('opacity', 0.3);
+                    $("#menu").attr("data-displayed", "1");
+                }
+                else
+                {
                     $("#menu").slideToggle('slow', function() {
                     });
                     $("#overlay").css('opacity', 0);
-                });
-            });
-
+                    $("#menu").attr("data-displayed", "0");
+                }
+            }
             function init() {
                 document.addEventListener("deviceready", startup, false);
             }
@@ -38,9 +52,7 @@
                 document.addEventListener("menubutton", doMenu, false);
             }
             function doMenu() {
-                $("#menu").slideToggle('slow', function() {
-                });
-                $("#overlay").css('opacity', 0.3);
+                menu_show();
             }
         </script>
 
@@ -77,7 +89,7 @@
         </div>
 
 
-        <div id="menu" data-role="none"  >
+        <div data-displayed="0" id="menu" data-role="none"  >
             <ul>
                 <li><a href="#">Nova igra</a></li>
                 <li><a href="#" >Predaja</a></li>
