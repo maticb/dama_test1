@@ -672,13 +672,15 @@
                 $(".img").css("height", ($(window).height() - $(window).height() * 0.05) / 8 + "px");
                 if (st_crnih === 0)
                 {
-                    alert("Zmagal je beli!");
+                    $("#navadn_popup").html("Zmagal je beli! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
+                    popup_show("#navadn_popup");
                     setup_krogcev();
                     na_vrsti = 1;
                 }
                 else if (st_belih === 0)
                 {
-                    alert("Zmagal je črni!");
+                    $("#navadn_popup").html("Zmagal je črni! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
+                    popup_show("#navadn_popup");
                     setup_krogcev();
                     na_vrsti = 1;
                 }
