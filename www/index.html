@@ -76,11 +76,13 @@
                     case -90:
                     case 90:
                         // alert('landscape');
+                        $("table td").css("width", $(window).width() / 8 + "px");
                         $(".img").css("height", visina_tr + "px");
                         //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                         break;
                     default:
                         // alert('portrait');
+                        $("table td").css("width", $(window).width() / 8 + "px");
                         $(".img").css("height", visina_tr + "px");
                         //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                         break;
@@ -146,12 +148,13 @@
             $(document).ready(function() {
                 na_vrsti_display();
                 // menu_show();
+                $("table td").css("width", $(window).width() / 8 + "px");
 
                 $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
 
 
                 setup_krogcev();
-                
+
             });
             function nova_click(event)
             {
@@ -468,7 +471,7 @@
                     else if (na_vrsti === 2)// na vrsti je črni
                         na_vrsti = 1;
                 }
-               na_vrsti_display();
+                na_vrsti_display();
 
                 pobarvani = false;
                 kliknjen_x = -1;
@@ -482,7 +485,7 @@
 
                 //reset visine because logic
                 $(".img").css("height", ($(window).height() - $(window).height() * 0.05) / 8 + "px");
-                
+
                 //TODO PREVEJRNAJE ČE SE SPREMENI V DAMO-------------------------------------------------------------------------------------------------------------
             }
 
