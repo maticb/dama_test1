@@ -151,11 +151,7 @@
 
 
                 setup_krogcev();
-                $("#p_30").html('<img onclick="click_dame(3,0,1,1)" data-barva="1" class="img" data-tip="1"  src="imgs/beli.png" alt="beli" />');
-                $("#p_32").html('<img onclick="click_dame(3,2,1,1)" data-barva="1" class="img" data-tip="1"  src="imgs/beli.png" alt="beli" />');
-
-                //$("#p_43").html('<img onclick="click_dame(4,3,1,2)" data-barva="2" class="img" data-tip="1"  src="imgs/crni.png" alt="crni" />');
-
+                
             });
             function nova_click(event)
             {
@@ -186,6 +182,7 @@
             var kliknjen_x = -1;
             var kliknjen_y = -1;
             var obarvani = [false, false, false, false];
+            var pobarvani_koord = [];
 
             function click_dame(x, y, tip, barva)
             {
@@ -205,9 +202,12 @@
                         var noben_pobarvan = false;
                         if ($("#" + selector1).html() === "")
                         {
-                            $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                            $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[0] = true;
                             noben_pobarvan = true;
+
+                            pobarvani_koord.push([x1, y1]);
+
                         }
                         else//levo gor je zasedeno
                         {
@@ -219,17 +219,19 @@
                                 var y1 = parseInt(y) - 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
                                 {
-                                    $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                                    $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                                     obarvani[0] = true;
                                     noben_pobarvan = true;
+                                    pobarvani_koord.push([x1, y1]);
                                 }
                             }
                         }
                         if ($("#" + selector2).html() === "")
                         {
-                            $("#" + selector2).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                            $("#" + selector2).html('<div onclick="premik(' + x2 + ',' + y2 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[1] = true;
                             noben_pobarvan = true;
+                            pobarvani_koord.push([x2, y2]);
                         }
                         else
                         {
@@ -241,9 +243,10 @@
                                 var y2 = parseInt(y) + 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO DESNO JE PRAZNO
                                 {
-                                    $("#" + selector3).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                                    $("#" + selector3).html('<div onclick="premik(' + x2 + ',' + y2 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                                     obarvani[1] = true;
                                     noben_pobarvan = true;
+                                    pobarvani_koord.push([x2, y2]);
                                 }
                             }
                         }
@@ -260,15 +263,16 @@
                         var x1 = parseInt(x) + 1;
                         var y1 = parseInt(y) - 1;
                         var selector2 = "p_" + (parseInt(x) + 1) + (parseInt(y) + 1);//desno dol
-                        var x1 = parseInt(x) + 1;
-                        var y1 = parseInt(y) + 1;
+                        var x2 = parseInt(x) + 1;
+                        var y2 = parseInt(y) + 1;
 
                         var noben_pobarvan = false;
                         if ($("#" + selector1).html() === "")
                         {
-                            $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                            $("#" + selector1).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[2] = true;
                             noben_pobarvan = true;
+                            pobarvani_koord.push([x1, y1]);
                         }
                         else//levo gor je zasedeno
                         {
@@ -280,17 +284,19 @@
                                 var y1 = parseInt(y) - 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
                                 {
-                                    $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                                    $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                                     obarvani[2] = true;
                                     noben_pobarvan = true;
+                                    pobarvani_koord.push([x1, y1]);
                                 }
                             }
                         }
                         if ($("#" + selector2).html() === "")
                         {
-                            $("#" + selector2).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                            $("#" + selector2).html('<div onclick="premik(' + x2 + ',' + y2 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                             obarvani[3] = true;
                             noben_pobarvan = true;
+                            pobarvani_koord.push([x2, y2]);
                         }
                         else//levo gor je zasedeno
                         {
@@ -302,9 +308,10 @@
                                 var y2 = parseInt(y) + 2;
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
                                 {
-                                    $("#" + selector3).html('<div onclick="premik(' + x2 + ',' + y2 + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
+                                    $("#" + selector3).html('<div onclick="premik(' + x2 + ',' + y2 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
                                     obarvani[3] = true;
                                     noben_pobarvan = true;
+                                    pobarvani_koord.push([x2, y2]);
                                 }
                             }
                         }
@@ -317,7 +324,7 @@
 
                     }
                     else//lahko gre nazaj
-                    {//////// TOOOOOOOOOOOOOODDDDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                    {//////// TOOOOOOOOOOOOOODDDDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO------------------------------------------------------------
                     }
 
                 }
@@ -393,11 +400,91 @@
                         obarvani[3] = false;
                     }
                     else//lahko gre nazaj
-                    {//////// TOOOOOOOOOOOOOODDDDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO
+                    {//////// TOOOOOOOOOOOOOODDDDOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO---------------------------------------------------
                     }
                 }
             }
+            function premik(x, y, tip)
+            {
+                var x = parseInt(x);
+                var y = parseInt(y);
+                pobarvani_koord.forEach(function(entry) {
+                    var x1 = entry[0];
+                    var y1 = entry[1];
+                    var selector = "#p_" + x1 + y1;
+                    $(selector).html("");
+                });
+                pobarvani_koord = [];
 
+
+                var selector_s = "#p_" + kliknjen_x + kliknjen_y;//stara pozicija
+                $(selector_s).html("");
+                var selector = "#p_" + x + y;//NOVA POZICIJA
+
+                if (na_vrsti === 1)//na vrsti je beli
+                {
+                    $(selector).html('<img onclick="click_dame(' + x + ',' + y + ',' + tip + ',1)" data-barva="1" class="img" data-tip="' + tip + '"  src="imgs/beli.png" alt="beli" />');
+                    //reset vsega
+
+                }
+                else if (na_vrsti === 2)// na vrsti je črni
+                {
+                    $(selector).html('<img onclick="click_dame(' + x + ',' + y + ',' + tip + ',2)" data-barva="2" class="img" data-tip="' + tip + '"  src="imgs/crni.png" alt="crni" />');
+                    //reset vsega
+                }
+                var ponovni_premik = false;
+                if (kliknjen_x + 2 === x)
+                {
+                    if (kliknjen_y < y)
+                    {
+                        var selector = "#p_" + (kliknjen_x + 1) + (kliknjen_y + 1);
+                        $(selector).html("");
+                    }
+                    else
+                    {
+                        var selector = "#p_" + (kliknjen_x + 1) + (kliknjen_y - 1);
+                        $(selector).html("");
+                    }
+                    ponovni_premik = true;
+                }
+                else if (kliknjen_x - 2 === x)
+                {
+                    if (kliknjen_y < y)
+                    {
+                        var selector = "#p_" + (kliknjen_x - 1) + (kliknjen_y + 1);
+                        $(selector).html("");
+                    }
+                    else
+                    {
+                        var selector = "#p_" + (kliknjen_x - 1) + (kliknjen_y - 1);
+                        $(selector).html("");
+                    }
+                    ponovni_premik = true;
+                }
+                if (!ponovni_premik)
+                {
+                    if (na_vrsti === 1)//na vrsti je beli
+                        na_vrsti = 2;
+                    else if (na_vrsti === 2)// na vrsti je črni
+                        na_vrsti = 1;
+                }
+               na_vrsti_display();
+
+                pobarvani = false;
+                kliknjen_x = -1;
+                kliknjen_y = -1;
+                obarvani[0] = false;
+                obarvani[1] = false;
+                obarvani[2] = false;
+                obarvani[3] = false;
+
+
+
+                //reset visine because logic
+                $(".img").css("height", ($(window).height() - $(window).height() * 0.05) / 8 + "px");
+                
+                //TODO PREVEJRNAJE ČE SE SPREMENI V DAMO-------------------------------------------------------------------------------------------------------------
+            }
 
 
 
