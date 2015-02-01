@@ -92,14 +92,14 @@
                     case -90:
                     case 90:
                         // alert('landscape');
-                        $("table td").css("width", $(window).width() / 8 + "px");
+                       // $("table td").css("width", $(window).width() / 8 + "px");
                         $(".img").css("height", visina_tr + "px");
                         //$("table").css("width", $(window).width() + "px");
                         //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                         break;
                     default:
                         // alert('portrait');
-                        $("table td").css("width", $(window).width() / 8 + "px");
+                        //$("table td").css("width", $(window).width() / 8 + "px");
                         $(".img").css("height", visina_tr + "px");
                        // $("table").css("width", $(window).width() + "px");
                         //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
@@ -185,7 +185,7 @@
                 // menu_show();
                 $("table").css("width", $(window).width() + "px");
                 setup_krogcev();
-                $("table td").css("width", $(window).width() / 8 + "px");
+               // $("table td").css("width", $(window).width() / 8 + "px");
                 $("table .body ").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
             });
             function nova_click(event)
