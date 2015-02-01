@@ -189,7 +189,20 @@
                 setup_krogcev();
                 $("table td").css("width", $(window).width() / 8 + "px");
 
-                $("table .body ").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
+
+
+                switch (window.orientation)
+                {
+                    case -90:
+                    case 90:
+                        // alert('landscape');
+                        $("table .body ").css("height", ($(window).width() - $(window).width() * 0.05) / 8);
+                        break;
+                    default:
+                        // alert('portrait');
+                        $("table .body ").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
+                        break;
+                }
             });
             function nova_click(event)
             {
