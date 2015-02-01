@@ -162,15 +162,19 @@
                 {
                     $("body").css("-moz-transform", "rotate(0deg");
                     $("body").css("-webkit-transform", "rotate(0deg");
+                    $("body").css("transform", "rotate(0deg");
                     $("#tabela").css("-moz-transform", "rotate(0deg");
                     $("#tabela").css("-webkit-transform", "rotate(0deg");
+                    $("#tabela").css("transform", "rotate(0deg");
                 }
                 else
                 {
                     $("body").css("-moz-transform", "rotate(-180deg");
                     $("body").css("-webkit-transform", "rotate(-180deg");
+                    $("body").css("transform", "rotate(-180deg");
                     $("#tabela").css("-moz-transform", "rotate(180deg");
                     $("#tabela").css("-webkit-transform", "rotate(180deg");
+                    $("#tabela").css("transform", "rotate(180deg");
                 }
             }
             $(document).ready(function() {
@@ -343,7 +347,7 @@
                                 var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2); //levo gor
                                 var x1 = parseInt(x) + 2;
                                 var y1 = parseInt(y) - 2;
-                               
+
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
                                 {
                                     $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
