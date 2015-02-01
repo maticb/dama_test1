@@ -92,10 +92,10 @@
                     case -90:
                     case 90:
                         // alert('landscape');
-                        $("table td").css("width", $(window).width() / 8 + "px");
+                        $("table td").css("width", $(window).height() / 8 + "px");
                         $(".img").css("height", visina_tr + "px");
-                        $("table").css("width", $(window).width() + "px");
-                        $("table .body ").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
+                        $("table").css("width", $(window).height() + "px");
+                        $("table .body ").css("height", ($(window).width() - $(window).width() * 0.05) / 8);
                         //$(".img").css("margin-left", ($("#" + selector).width() / 2) - ($("#" + selector + " img").width() / 2) + "px");
                         break;
                     default:
@@ -165,21 +165,21 @@
             {
                 if (t === 1)
                 {
-                    $("body").css("-moz-transform", "rotate(0deg");
-                    $("body").css("-webkit-transform", "rotate(0deg");
-                    $("body").css("transform", "rotate(0deg");
-                    $("#tabela").css("-moz-transform", "rotate(0deg");
-                    $("#tabela").css("-webkit-transform", "rotate(0deg");
-                    $("#tabela").css("transform", "rotate(0deg");
+                    /* $("body").css("-moz-transform", "rotate(0deg");
+                     $("body").css("-webkit-transform", "rotate(0deg");
+                     $("body").css("transform", "rotate(0deg");
+                     $("#tabela").css("-moz-transform", "rotate(0deg");
+                     $("#tabela").css("-webkit-transform", "rotate(0deg");
+                     $("#tabela").css("transform", "rotate(0deg");*/
                 }
                 else
                 {
-                    $("body").css("-moz-transform", "rotate(-180deg");
-                    $("body").css("-webkit-transform", "rotate(-180deg");
-                    $("body").css("transform", "rotate(-180deg");
-                    $("#tabela").css("-moz-transform", "rotate(180deg");
-                    $("#tabela").css("-webkit-transform", "rotate(180deg");
-                    $("#tabela").css("transform", "rotate(180deg");
+                    /*  $("body").css("-moz-transform", "rotate(-180deg");
+                     $("body").css("-webkit-transform", "rotate(-180deg");
+                     $("body").css("transform", "rotate(-180deg");
+                     $("#tabela").css("-moz-transform", "rotate(180deg");
+                     $("#tabela").css("-webkit-transform", "rotate(180deg");
+                     $("#tabela").css("transform", "rotate(180deg");*/
                 }
             }
             $(document).ready(function() {
