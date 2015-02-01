@@ -13,25 +13,37 @@ and open the template in the editor.
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
 }
+.header_tb th
+{ 
+   
+    background-color:white !important;
+    width:12.5%;
+    height:0px;
+}
+.header_tb
+{
+   
+    height:0px;
+}
 table{
     border-collapse: collapse;
     width:100%;
 }
 table,table td{
     border: 1px solid grey;
-  
+
 
 }
 table tr  td{
-      color:white;
+    color:white;
 }
 table tr:nth-child(odd) td:nth-child(even){
     background-color: black;
-    
+
 }
 table tr:nth-child(even) td:nth-child(odd){
     background-color: black;
-  
+
 }
 
 table tr img{
