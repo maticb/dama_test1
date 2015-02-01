@@ -18,12 +18,19 @@ table{
 }
 table,table td{
     border: 1px solid grey;
+  
+
+}
+table tr  td{
+      color:white;
 }
 table tr:nth-child(odd) td:nth-child(even){
     background-color: black;
+    
 }
 table tr:nth-child(even) td:nth-child(odd){
     background-color: black;
+  
 }
 
 table tr img{

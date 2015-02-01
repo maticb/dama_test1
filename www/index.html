@@ -164,7 +164,6 @@
                     $("body").css("-webkit-transform", "rotate(0deg");
                     $("#tabela").css("-moz-transform", "rotate(0deg");
                     $("#tabela").css("-webkit-transform", "rotate(0deg");
-
                 }
                 else
                 {
@@ -172,15 +171,15 @@
                     $("body").css("-webkit-transform", "rotate(-180deg");
                     $("#tabela").css("-moz-transform", "rotate(180deg");
                     $("#tabela").css("-webkit-transform", "rotate(180deg");
-
                 }
             }
             $(document).ready(function() {
                 na_vrsti_display();
                 // menu_show();
+
+                setup_krogcev();
                 $("table td").css("width", $(window).width() / 8 + "px");
                 $("table tr").css("height", ($(window).height() - $(window).height() * 0.05) / 8);
-                setup_krogcev();
             });
             function nova_click(event)
             {
@@ -199,7 +198,7 @@
                     var x1 = entry[0];
                     var y1 = entry[1];
                     var selector = "#p_" + x1 + y1;
-                    $(selector).html("");
+                    $(selector).html();
                 });
                 pobarvani_koord = [];
                 na_vrsti_display();
@@ -219,7 +218,6 @@
                     turn(1);
                 }
                 popup_show("#predaja_confirm");
-
             }
             function neodloceno_click(event)
             {
@@ -236,7 +234,6 @@
                     turn(1);
                 }
                 popup_show("#neodloceno_confirm");
-
             }
 
             function preveri_barvo(selector)
@@ -346,6 +343,7 @@
                                 var selector3 = "p_" + (parseInt(x) + 2) + (parseInt(y) - 2); //levo gor
                                 var x1 = parseInt(x) + 2;
                                 var y1 = parseInt(y) - 2;
+                               
                                 if ($("#" + selector3).html() === "")// 2 POLJA DIAGONALNO LEVO JE PRAZNO
                                 {
                                     $("#" + selector3).html('<div onclick="premik(' + x1 + ',' + y1 + ',' + tip + ')" style="height:' + visina_tr + 'px;" class="img_ozadje"  ></div>');
@@ -794,14 +792,14 @@
             </div>-->
             <div role="main" class="ui-content">
                 <table id="tabela">
-                    <tr><td id="p_00"></td><td id="p_01"></td><td id="p_02"></td><td id="p_03"></td><td id="p_04"></td><td id="p_05"></td><td id="p_06" ></td><td id="p_07"></td></tr>
-                    <tr><td id="p_10"></td><td id="p_11"></td><td id="p_12"></td><td id="p_13"></td><td id="p_14"></td><td id="p_15"></td><td id="p_16" ></td><td id="p_17"></td></tr>
-                    <tr><td id="p_20"></td><td id="p_21"></td><td id="p_22"></td><td id="p_23"></td><td id="p_24"></td><td id="p_25"></td><td id="p_26" ></td><td id="p_27"></td></tr>
-                    <tr><td id="p_30"></td><td id="p_31"></td><td id="p_32"></td><td id="p_33"></td><td id="p_34"></td><td id="p_35"></td><td id="p_36" ></td><td id="p_37"></td></tr>
-                    <tr><td id="p_40"></td><td id="p_41"></td><td id="p_42"></td><td id="p_43"></td><td id="p_44"></td><td id="p_45"></td><td id="p_46" ></td><td id="p_47"></td></tr>
-                    <tr><td id="p_50"></td><td id="p_51"></td><td id="p_52"></td><td id="p_53"></td><td id="p_54"></td><td id="p_55"></td><td id="p_56" ></td><td id="p_57"></td></tr>
-                    <tr><td id="p_60"></td><td id="p_61"></td><td id="p_62"></td><td id="p_63"></td><td id="p_64"></td><td id="p_65"></td><td id="p_66" ></td><td id="p_67"></td></tr>
-                    <tr><td id="p_70"></td><td id="p_71"></td><td id="p_72"></td><td id="p_73"></td><td id="p_74"></td><td id="p_75"></td><td id="p_76" ></td><td id="p_77"></td></tr>
+                    <tr><td id="p_00"> </td><td id="p_01"> </td><td id="p_02"> </td><td id="p_03"> </td><td id="p_04"> </td><td id="p_05"> </td><td id="p_06" > </td><td id="p_07"> </td></tr>
+                    <tr><td id="p_10"> </td><td id="p_11"> </td><td id="p_12"> </td><td id="p_13"> </td><td id="p_14"> </td><td id="p_15"> </td><td id="p_16" > </td><td id="p_17"> </td></tr>
+                    <tr><td id="p_20"> </td><td id="p_21"> </td><td id="p_22"> </td><td id="p_23"> </td><td id="p_24"> </td><td id="p_25"> </td><td id="p_26" > </td><td id="p_27"> </td></tr>
+                    <tr><td id="p_30"> </td><td id="p_31"> </td><td id="p_32"> </td><td id="p_33"> </td><td id="p_34"> </td><td id="p_35"> </td><td id="p_36" > </td><td id="p_37"> </td></tr>
+                    <tr><td id="p_40"> </td><td id="p_41"> </td><td id="p_42"> </td><td id="p_43"> </td><td id="p_44"> </td><td id="p_45"> </td><td id="p_46" > </td><td id="p_47"> </td></tr>
+                    <tr><td id="p_50"> </td><td id="p_51"> </td><td id="p_52"> </td><td id="p_53"> </td><td id="p_54"> </td><td id="p_55"> </td><td id="p_56" > </td><td id="p_57"> </td></tr>
+                    <tr><td id="p_60"> </td><td id="p_61"> </td><td id="p_62"> </td><td id="p_63"> </td><td id="p_64"> </td><td id="p_65"> </td><td id="p_66" > </td><td id="p_67"> </td></tr>
+                    <tr><td id="p_70"> </td><td id="p_71"> </td><td id="p_72"> </td><td id="p_73"> </td><td id="p_74"> </td><td id="p_75"> </td><td id="p_76" > </td><td id="p_77"> </td></tr>
 
                 </table>
             </div>
