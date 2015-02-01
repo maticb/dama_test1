@@ -263,6 +263,19 @@
             function click_dame(x, y, tip, barva)
             {
                 var visina_tr = (($(window).height() - $(window).height() * 0.05) / 8) - 2;
+
+                switch (window.orientation)
+                {
+                    case -90:
+                    case 90:
+                        // alert('landscape');
+                        visina_tr = ($(window).width() - $(window).width() * 0.05) / 8;
+                        break;
+                    default:
+                        // alert('portrait');
+                        visina_tr = ($(window).height() - $(window).height() * 0.05) / 8;
+                        break;
+                }
                 if (pobarvani === false)
                 {
                     if (parseInt(tip) === 1 && na_vrsti === 1 && parseInt(barva) === 1)//navadna dama, bela-------------------------------------------------------------------------
@@ -713,20 +726,20 @@
                 obarvani[2] = false;
                 obarvani[3] = false;
                 //reset visine because logic
-                  switch (window.orientation)
+                switch (window.orientation)
                 {
                     case -90:
                     case 90:
                         // alert('landscape');
-                         $(".img").css("height", ($(window).width() - $(window).width() * 0.05) / 8 + "px");
+                        $(".img").css("height", ($(window).width() - $(window).width() * 0.05) / 8 + "px");
                         break;
                     default:
                         // alert('portrait');
                         $(".img").css("height", ($(window).height() - $(window).height() * 0.05) / 8 + "px");
                         break;
-                } 
-                
-               
+                }
+
+
                 if (st_crnih === 0)
                 {
                     $("#navadn_popup").html("Zmagal je beli! <button onclick='popup_show(\"#navadn_popup\");' >OK</button>");
